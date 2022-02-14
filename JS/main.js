@@ -8,11 +8,6 @@ let links = document.querySelectorAll('.menu__link'),
     id = array.indexOf(element),
     color = 'white';
 
-window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-});
-
 ( function setAllListeners() {
     links.forEach(element => {
         element.addEventListener('click', function(event) {
@@ -75,7 +70,20 @@ window.scrollTo({
  
     }, {passive: false});
 
-    window.addEventListener('scroll', changeMenuStyles);
+    if (document.body.getBoundingClientRect().top === 0) {
+        window.addEventListener('scroll', applyStyles);
+    }
+
+    else {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+        setTimeout(function() {
+            window.addEventListener('scroll', applyStyles);
+        }, 1000);
+    };
 
     document.querySelector('#toProjects').addEventListener('click', function(event) {
         event.preventDefault(); 
@@ -144,7 +152,7 @@ function scrollPage(element) {
     document.querySelector(`a[href='#${element.id}'`).classList.add('menu__link_active');
 };
 
-function changeMenuStyles() {
+function applyStyles() {
     switch(true) {
         case (document.elementFromPoint(0, array[1].getBoundingClientRect().top) === array[1]):
             document.querySelector('.line').style.backgroundColor = '#010101';
@@ -161,6 +169,20 @@ function changeMenuStyles() {
             color = 'black';
 
             setHoverMenuListener();
+
+            document.querySelector('.aboutMe__caption').style.animation = 'smoothAppearance 1s ease .5s forwards';
+
+            document.querySelector('.aboutMe__h4').style.animation = 'smoothAppearance 1s ease .9s forwards';
+
+            document.querySelector('.aboutMe__division').style.animation = 'smoothAppearance 1s ease 1.1s forwards';
+
+            document.querySelector('.aboutMe__text').style.animation = 'smoothAppearance 1s ease 1.3s forwards';
+
+            document.querySelector('.aboutMe__image').style.animation = 'photo 1s ease 1.3s forwards';
+
+            document.querySelector('.aboutMe__resume').style.animation = 'smoothAppearance 1s ease 1.5s forwards';
+
+            document.querySelector('.aboutMe__counter').style.animation = 'smoothAppearance 1s ease 1.7s forwards';
 
             break;
 
@@ -179,6 +201,21 @@ function changeMenuStyles() {
             color = 'black';
 
             setHoverMenuListener();
+
+            document.querySelector('.projects__title').style.animation = 'smoothAppearance 1s ease .5s forwards';
+
+            document.querySelector('.projects__border').style.animation = 'smoothAppearance 1s ease .8s forwards';
+
+            document.querySelector('.projects__list').style.animation = 'smoothAppearance 1s ease 1.2s forwards';
+
+            document.querySelector('.projects__counter').style.animation = 'smoothAppearance 1s ease 1.4s forwards';
+
+            break;
+
+        case (document.elementFromPoint(0, array[3].getBoundingClientRect().top) === array[3]):
+            document.querySelector('.contacts__counter').style.animation = 'smoothAppearance 1s ease .5s forwards';
+
+            document.querySelector('.contacts__form').style.animation = 'form 1s ease .8s forwards';
 
             break;
 

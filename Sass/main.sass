@@ -100,6 +100,8 @@ $transparentColor: rgba(208, 208, 208, 1)
 .line
     @extend %fixedOptions
     height: 100%
+    opacity: 0
+    animation: smoothAppearance .8s ease forwards
 
 .answer 
     display: flex
@@ -127,7 +129,9 @@ $transparentColor: rgba(208, 208, 208, 1)
 
 .menu
     @extend %fixedOptions
-    transform: translateY(55%) 
+    transform: translateY(-150%)
+    opacity: 0
+    animation: menu 2s ease forwards
 
     &__list
         width: 100%
@@ -143,11 +147,12 @@ $transparentColor: rgba(208, 208, 208, 1)
         height: 10.5px
         background-color: white
         transition: background-color .3s linear
+        margin-top: 100px
 
         &_active
             background-color: $oliveColor !important
-        &:nth-child(2), &:nth-child(3), &:last-child
-            margin-top: 100px
+        &:first-child
+            margin-top: 0
 
     &__link
         border: 1px solid white
@@ -174,7 +179,7 @@ $transparentColor: rgba(208, 208, 208, 1)
     @extend %bgOptions
     background-image: url(../Img/Home-section-wallpaper.jpg)
     padding-bottom: 100px
-    overflow-y: hidden
+    overflow: hidden
 
     &:before
         @extend %overlayOptions
@@ -192,24 +197,24 @@ $transparentColor: rgba(208, 208, 208, 1)
             width: 90%
             border-top: 2px solid $peachColor
             top: 35px
-            // animation: topBorder .6s ease forwards
+            animation: topBorder .8s ease 1s forwards
         &:nth-child(2)
             height: 90%
             border-left: 2px solid $peachColor
             top: 35px
             left: 25px
-            // animation: leftBorder .6s ease .3s forwards
+            animation: leftBorder .8s ease 1.3s forwards
         &:nth-child(3)
             height: 90%
             border-right: 2px solid $peachColor
             top: 35px
             right: 25px
-            // animation: rightBorder .6s ease .6s forwards
+            animation: rightBorder .8s ease 1.6s forwards
         &:last-child
             width: 90%
             border-bottom: 2px solid $peachColor
             bottom: 35px
-            // animation: bottomBorder .6s ease .9s forwards
+            animation: bottomBorder .8s ease 1.9s forwards
 
     &__main
         display: flex
@@ -226,6 +231,8 @@ $transparentColor: rgba(208, 208, 208, 1)
             transform: rotate(90deg)
             @extend %titleOptions
             color: rgba($transparentColor, .1)
+            opacity: 0
+            animation: smoothAppearance 1s ease 2.2s forwards
 
     &__info
         padding: 10px 0 0 6px
@@ -235,12 +242,15 @@ $transparentColor: rgba(208, 208, 208, 1)
         text-transform: uppercase
         user-select: none
         letter-spacing: 2px
+        opacity: 0
+        animation: smoothAppearance 1s ease 1.4s forwards
 
         &:last-of-type
             text-align: center
             padding-top: 17.5px
+            animation: smoothAppearance 1s ease 1.8s forwards
     
-    &__btn
+    &__btn  
         display: inline-block
         margin-top: 60px
         border: 2px solid white
@@ -252,6 +262,8 @@ $transparentColor: rgba(208, 208, 208, 1)
         user-select: none
         position: relative
         overflow: hidden
+        opacity: 0
+        animation: smoothAppearance 1s ease 2s forwards
 
         &:before
             content: ''
@@ -288,6 +300,8 @@ $transparentColor: rgba(208, 208, 208, 1)
         max-width: 3.2%
         width: 100%
         padding-top: 50px
+        opacity: 0
+        animation: smoothAppearance 1s ease 2.2s forwards
     &__icon
         color: white
         font-size: 27.5px
@@ -320,6 +334,8 @@ $transparentColor: rgba(208, 208, 208, 1)
         display: flex
         height: 100%
         align-items: center
+        opacity: 0
+        animation: smoothAppearance 1s ease 2s forwards
     &__line
         width: 1px
         height: 150px
@@ -336,6 +352,8 @@ h1
     text-transform: uppercase
     letter-spacing: 14.5px
     user-select: none
+    opacity: 0
+    animation: smoothAppearance 1s ease 1s forwards
 
 .aboutMe
     overflow-x: hidden
@@ -350,6 +368,7 @@ h1
         height: .5px 
         background-color: $blackColor
         margin: 25px 0 25px 0
+        opacity: 0
     &__content
         max-width: 55%
         width: 100%
@@ -359,17 +378,20 @@ h1
         color: $blackColor
         text-transform: uppercase
         letter-spacing: 3.5px
+        opacity: 0
     &__h4
         font-size: 20px
         color: $peachColor
         text-transform: uppercase
         letter-spacing: 1.5px 
         padding-top: 10px
+        opacity: 0
     &__text
         font-size: 15.5px
         color: #464646
         text-align: justify
         letter-spacing: .5px
+        opacity: 0
     &__image
         max-width: 450px
         max-height: 450px
@@ -377,6 +399,7 @@ h1
         height: 100%
         margin-top: 10px
         position: relative
+        opacity: 0
 
         &:after
             content: 'Обо мне'
@@ -403,6 +426,7 @@ h1
         transition: color .4s cubic-bezier(0.220, 0.7, 0.36, 1) 0s
         position: relative
         overflow: hidden
+        opacity: 0
 
         &:before
             content: ''
@@ -428,6 +452,7 @@ h1
         padding-top: 75px
         max-width: 50px
         width: 100%
+        opacity: 0
     &__number
         @extend %smallNumberOptions
     &__circle
@@ -447,10 +472,8 @@ h1
         @extend %titleOptions
         color: rgba($transparentColor, .2)
         width: 100%
-        position: absolute
         text-align: center
         top: -45px
-
     &__title
         color: $peachColor
         font-size: 35px
@@ -458,15 +481,18 @@ h1
         text-transform: uppercase
         text-align: center
         padding-bottom: 20px
+        opacity: 0
     &__border
         width: 50px
         height: 3px
         background-color: $oliveColor
         margin: 0 auto
+        opacity: 0
     &__list
         display: flex
         justify-content: center
         padding-top: 50px
+        opacity: 0
     &__item
         max-width: 350px
         width: 100%
@@ -552,6 +578,7 @@ h1
         align-items: center
         justify-content: flex-end
         padding-top: 55px
+        opacity: 0
     &__line
         width: 50px
         height: 4px
@@ -605,6 +632,7 @@ h1
         display: flex
         align-items: center
         flex-direction: column
+        opacity: 0
     &__number
        @extend %numberOptions
     &__circle
@@ -631,6 +659,8 @@ h1
         padding: 25px 20px 25px 20px
         border-radius: 3.5px
         color: $blackColor 
+        opacity: 0
+        transform: translateY(100%)
     &__inputs
         display: flex
         flex-direction: column
@@ -740,6 +770,22 @@ h1
         transition: color .4 linear
         z-index: inherit
     
+@keyframes smoothAppearance
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1
+
+@keyframes menu
+    0%
+        opacity: 0
+        transform: translateY(-150%)
+
+    100%
+        opacity: 1
+        transform: translateY(55%)
+
 @keyframes scrollingArrows
     0%
         opacity: 0
@@ -787,3 +833,21 @@ h1
     100%
         bottom: 35px
         visibility: visible
+
+@keyframes photo
+    0%
+        opacity: 0
+        transform: translateX(150%)
+
+    100%
+        opacity: 1
+        transform: translateX(0)
+
+@keyframes form
+    0%
+        opacity: 0
+        transform: translateY(100%)
+
+    100%
+        opacity: 1
+        transform: translateY(0)
